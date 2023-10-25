@@ -32,4 +32,14 @@ public class ApiHelper
 
     await client.PostAsync(request);
   }
+
+  public static async void Put(int id, string newAnimal)
+  {
+    RestClient client = new RestClient("http://localhost:5000/");
+    RestRequest request = new RestRequest($"api/animals/{id}", Method.Put);
+    request.AddHeader("Content-Type", "application/json");
+    request.AddJsonBody(newAnimal);
+
+    await client.PutAsync(request);
+  }
 }
