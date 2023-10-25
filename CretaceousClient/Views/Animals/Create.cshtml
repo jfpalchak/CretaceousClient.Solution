@@ -1,0 +1,28 @@
+@{
+  ViewData["Title"] = "Create Animal";
+}
+
+@model CretaceousClient.Models.Animal;
+
+<h4>Add a New Animal to Cretaceous Park</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(m => m.Name)
+  <br/>
+  @Html.TextBoxFor(m => m.Name)
+  <br/>
+  @Html.LabelFor(m => m.Species)
+  <br/>
+  @Html.TextBoxFor(m => m.Species)
+  <br/>
+  @Html.LabelFor(m => m.Age)
+  <br/>
+  @Html.TextBoxFor(m => m.Age)
+  <br/>
+  <br/>
+  <input type="submit" value="Add New Animal" class="btn btn-primary"/>
+}
+
+<br/>
+<p>@Html.ActionLink("Back to all Animals", "Index")</p>
