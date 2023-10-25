@@ -22,4 +22,15 @@ public class Animal
 
     return animalList;
   }
+
+  public static Animal GetDetails(int id)
+  {
+    var apiCallTask = ApiHelper.Get(id);
+    var result = apiCallTask.Result;
+
+    JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+    Animal animal = JsonConvert.DeserializeObject<Animal>(jsonResponse.ToString());
+
+    return animal;
+  }
 }
