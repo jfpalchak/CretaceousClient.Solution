@@ -27,6 +27,7 @@ public class ApiHelper
   {
     RestClient client = new RestClient("http://localhost:5000/");
     RestRequest request = new RestRequest($"api/animals", Method.Post);
+    // any request that updates the database requires a header and body
     request.AddHeader("Content-Type", "application/json");
     request.AddJsonBody(newAnimal);
 
@@ -41,5 +42,14 @@ public class ApiHelper
     request.AddJsonBody(newAnimal);
 
     await client.PutAsync(request);
+  }
+
+  public static async void Delete(int id)
+  {
+    RestClient client = new RestClient("http://localhost:5000/");
+    RestRequest request = new RestRequest($"api/animals/{id}", Method.Delete);
+    request.AddHeader("Content-Type", "application/json");
+
+    await client.DeleteAsync(request);
   }
 }
